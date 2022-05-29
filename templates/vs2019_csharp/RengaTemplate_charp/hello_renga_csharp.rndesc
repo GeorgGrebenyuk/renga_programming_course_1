@@ -1,5 +1,5 @@
 ﻿<RengaPlugin>
-	<Name>Hello_renga!</Name>
+	<Name>Hello, Renga (VS 2019, C#)</Name>
 	<!-- Displayed plugin name -->
 	<Version>1.0</Version>
 	<!-- Plugin version -->

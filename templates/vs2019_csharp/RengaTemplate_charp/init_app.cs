@@ -19,7 +19,7 @@ namespace RengaTemplate_charp
             Renga.IUIPanelExtension panel_extension = renga_user_interface.CreateUIPanelExtension();
             //Создаем кнопку с событием нажатия на неё пользователем и вызова какого-то действия
             Renga.IAction action_create_button = renga_user_interface.CreateAction();
-            action_create_button.DisplayName = "Запустить окно приветствия";
+            action_create_button.DisplayName = "Запустить окно приветствия для C# VS 2019";
             //Привязываем к кнопке событие, вызывающее какие-то действия
             ActionEventSource event_for_button = new Renga.ActionEventSource(action_create_button);
             //Формальная процедура назначения действия, когда происходит событие (у нас собатие = нажатию на кнопку)
