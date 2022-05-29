@@ -36,8 +36,9 @@ DISTFILES += \
     /rengacomapi.tli \ #Подключаем com-библиотеку Renga (реализующий файл)
     hello_renga_qt6.rndesc
 SOURCES += \
-    dllmain.cpp \
-    init_app.cpp
+    init_app.cpp \
+    #dllmain.cpp \
+
 
 TRANSLATIONS += \
     qt6_cpp_ru_RU.ts

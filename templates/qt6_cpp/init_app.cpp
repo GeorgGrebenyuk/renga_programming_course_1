@@ -19,7 +19,10 @@ public:
 private:
     const std::wstring text;
 };
-
+void init_app::addHandler(Renga::ActionEventHandler* pHandler)
+{
+    m_handlerContainer.emplace_back(pHandler);
+}
 bool init_app::initialize(const wchar_t* pluginPath) {
     auto renga_app =
         Renga::CreateApplication(CLSCTX_INPROC_SERVER);
@@ -32,8 +35,8 @@ bool init_app::initialize(const wchar_t* pluginPath) {
     Renga::IActionPtr action_create_button =
         renga_user_interface->CreateAction();
     action_create_button->PutDisplayName("Run window for C++ QT");
-    new event_run(action_create_button, L"Hello, Renga!");
-
+    //new event_run(action_create_button, L"Hello, Renga!");
+    addHandler(new event_run(action_create_button, L"Hello, Renga!"));
     ui_panel_ext->AddToolButton(action_create_button);
     //Добавление интерфейса в программу
     renga_user_interface->AddExtensionToPrimaryPanel(ui_panel_ext);
@@ -44,5 +47,5 @@ bool init_app::initialize(const wchar_t* pluginPath) {
 }
 void init_app::stop()
 {
-
+    m_handlerContainer.clear();
 }
