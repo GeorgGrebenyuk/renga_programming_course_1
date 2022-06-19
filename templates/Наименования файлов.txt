@@ -1,0 +1,9 @@
+Для описание файлов шаблонов
+
+VS2019
+C#
+Renga_plugin_vs2019_csharp
+Шаблон плагина (библиотеки классов на .NET Framework) для Renga, на C#
+
+Visual C++
+Шаблон плагина (Dynamic link library) для Renga, на Visual C++
