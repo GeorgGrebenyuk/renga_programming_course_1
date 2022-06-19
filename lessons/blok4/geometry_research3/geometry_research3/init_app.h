@@ -2,10 +2,10 @@
 #include "pch.h"
 #include <Renga/IPlugin.h>
 #include <Renga/ActionEventHandler.hpp>
-#include <TopoDS_Shape.hxx> 
+//#include <TopoDS_Shape.hxx> 
 
-static void get_by_grid(Renga::IGridPtr pGrid, TopoDS_Shape* to_add);
-static void visualize_figure(TopoDS_Shape* to_vizualize);
+//static void get_by_grid(Renga::IGridPtr pGrid, TopoDS_Shape* to_add);
+//static void visualize_figure(TopoDS_Shape* to_vizualize);
 
 class init_app : public plugins::IPlugin
 {

@@ -1,0 +1,15 @@
+<RengaPlugin>
+	<Name>geometry test OCCT</Name>
+	<!-- Displayed plugin name -->
+	<Version>1.0</Version>
+	<!-- Plugin version -->
+	<Copyright>GeorgGrebenyuk</Copyright>
+	<!-- Copyright information -->
+	<RequiredAPIVersion>2.17</RequiredAPIVersion>
+	<!-- Minimum required version of Renga API -->
+	<!--PluginType>cpp</PluginType> -->
+	<PluginFilename>C:\Users\Georg\Documents\GitHub\renga_programming_course_1\lessons\blok4\geometry_research3\x64\Debug\geometry_research.dll</PluginFilename>
+	<!-- Path to the plugin's binary file, either relative to the folder containing the .rndesc file or an absolute one C:\Users\Georg\Documents\GitHub\renga_programming_course_1\lessons\blok4\geometry_research3\x64\Debug\ -->
+	<Vendor>-</Vendor>
+	<!-- Vendor of the plugin -->
+</RengaPlugin>

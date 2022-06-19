@@ -126,18 +126,8 @@
       <AdditionalDependencies>vtkInteractionStyle-9.1d.lib;vtkRenderingOpenGL2-9.1d.lib;vtkCommonCore-9.1d.lib;vtkRenderingCore-9.1d.lib;vtkCommonExecutionModel-9.1d.lib;TKTopAlgo.lib;TKMath.lib;TKPrim.lib;TKShHealing.lib;TKV3d.lib;TKIVtk.lib;TKBRep.lib;TKernel.lib;</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "%VTK_INSTALL%\bin\vtkRenderingOpenGL2-9.1d.dll" "$(TargetDir)vtkRenderingOpenGL2-9.1d.dll" 
-copy /Y "%VTK_INSTALL%\bin\vtkCommonCore-9.1d.dll" "$(TargetDir)vtkCommonCore-9.1d.dll"
-copy /Y "%VTK_INSTALL%\bin\vtkInteractionStyle-9.1d.dll" "$(TargetDir)vtkInteractionStyle-9.1d.dll"
-copy /Y "%VTK_INSTALL%\bin\vtkRenderingCore-9.1d.dll" "$(TargetDir)vtkRenderingCore-9.1d.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKTopAlgo.dll" "$(TargetDir)TKTopAlgo.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKMath.dll" "$(TargetDir)TKMath.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKPrim.dll" "$(TargetDir)TKPrim.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKShHealing.dll" "$(TargetDir)TKShHealing.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKV3d.dll" "$(TargetDir)TKV3d.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKIVtk.dll" "$(TargetDir)TKIVtk.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKBRep.dll" "$(TargetDir)TKBRep.dll"
-copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKernel.dll" "$(TargetDir)TKernel.dll"</Command>
+      <Command>xcopy /Y /S "%VTK_INSTALL%\bin\*" "$(TargetDir)" 
+xcopy /Y /S "%OCCT_INSTALL%\win64\vc14\bind\*" "$(TargetDir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -158,9 +148,6 @@ copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKernel.dll" "$(TargetDir)TKernel.dll"</
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="init_app.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="init_app.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

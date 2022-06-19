@@ -164,27 +164,34 @@ bool init_app::initialize(const wchar_t* pluginPath) {
 		Renga::CreateApplication(CLSCTX_INPROC_SERVER);
 	if (!renga_app) return false;
 	//Получение интерфейса
-	Renga::IUIPtr renga_user_interface = renga_app->GetUI();
-	Renga::IUIPanelExtensionPtr ui_panel_ext = 
-		renga_user_interface->CreateUIPanelExtension();
-	//Добавление кнопки стандартного экспорта
-	Renga::IActionPtr action_create_button1 = 
-		renga_user_interface->CreateAction();
-	action_create_button1->PutDisplayName("Export3DObjects");
-	action_create_button1->ToolTip = "Export as 3d objects";
-	addHandler(new geometry_export_3d(action_create_button1, renga_app->Project));
-	ui_panel_ext->AddToolButton(action_create_button1);
-	//Добавление кнопки экспорта через сетки с материалами
-	Renga::IActionPtr action_create_button2 =
-		renga_user_interface->CreateAction();
-	action_create_button2->PutDisplayName("Export3Grids");
-	action_create_button2->ToolTip = "Export as grids";
-	addHandler(new geometry_export_grids(action_create_button2, renga_app->Project));
-	ui_panel_ext->AddToolButton(action_create_button2);
+	if (auto renga_user_interface = renga_app->GetUI())
+	{
+		if (auto ui_panel_ext = renga_user_interface->CreateUIPanelExtension())
+		{
+			//Добавление кнопки стандартного экспорта
+			Renga::IActionPtr action_create_button1 =
+				renga_user_interface->CreateAction();
+			action_create_button1->PutDisplayName("Export3DObjects");
+			action_create_button1->ToolTip = "Export as 3d objects";
+			addHandler(new geometry_export_3d(action_create_button1, renga_app->Project));
+			ui_panel_ext->AddToolButton(action_create_button1);
+
+			//Добавление кнопки экспорта через сетки с материалами
+			Renga::IActionPtr action_create_button2 =
+				renga_user_interface->CreateAction();
+			action_create_button2->PutDisplayName("Export3Grids");
+			action_create_button2->ToolTip = "Export as grids";
+			addHandler(new geometry_export_grids(action_create_button2, renga_app->Project));
+			ui_panel_ext->AddToolButton(action_create_button2);
 
 
-	//Добавление интерфейса в программу	
-	renga_user_interface->AddExtensionToPrimaryPanel(ui_panel_ext);
+			//Добавление интерфейса в программу	
+			renga_user_interface->AddExtensionToPrimaryPanel(ui_panel_ext);
+		}
+		
+	}
+	//Renga::IUIPtr renga_user_interface = renga_app->GetUI();
+	
 	
 	return true;
 }

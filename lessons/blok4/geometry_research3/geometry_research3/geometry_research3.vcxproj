@@ -22,8 +22,9 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{88de4b06-aaa0-4215-87b9-8799a9167eef}</ProjectGuid>
-    <RootNamespace>geometry_research3</RootNamespace>
+    <RootNamespace>geometry_research</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>geometry_research</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -126,6 +127,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>%RENGA_SDK%/C++/Include;%RENGA_SDK%/tlb;%OCCT_INSTALL%/inc;%VTK_INSTALL%/include/vtk-9.1;</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -185,7 +187,7 @@ copy /Y "%OCCT_INSTALL%\win64\vc14\bind\TKernel.dll" "$(TargetDir)TKernel.dll"</
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="geometry_research3.rndesc" />
+    <None Include="geometry_research.rndesc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

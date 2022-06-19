@@ -34,6 +34,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="geometry_research3.rndesc" />
+    <None Include="geometry_research.rndesc" />
   </ItemGroup>
 </Project>
