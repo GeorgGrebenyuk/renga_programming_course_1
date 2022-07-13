@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{440aa803-9fdf-499f-bda7-38a5e62be48b}</ProjectGuid>
-    <RootNamespace>vs2019cpp</RootNamespace>
+    <ProjectGuid>{e11d402f-2da4-487f-a49a-e8df477146d6}</ProjectGuid>
+    <RootNamespace>rengavcpptemplate</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -44,7 +44,6 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -87,7 +86,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;VS2019CPP_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;RENGAVCPPTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -104,7 +103,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;VS2019CPP_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;RENGAVCPPTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -121,11 +120,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;VS2019CPP_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;RENGAVCPPTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>%RENGA_SDK%/C++/Include;%RENGA_SDK%/tlb;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%RENGA_SDK%\C++\Include;%RENGA_SDK%\tlb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,8 +132,14 @@
       <EnableUAC>false</EnableUAC>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist G:\Soft\Renga\Plugins\$(ProjectName) mkdir G:\Soft\Renga\Plugins\$(ProjectName)
-copy /Y  "$(ProjectDir)$(ProjectName).rndesc" "G:\Soft\Renga\Plugins\$(ProjectName)\$(ProjectName).rndesc"</Command>
+      <Command>if not exist "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)" mkdir "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)"
+copy /Y "$(ProjectDir)$(ProjectName).rndesc" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(ProjectName).rndesc"
+copy /Y "$(ProjectDir)logo.png" "$(TargetDir)logo.png"
+
+if $(ConfigurationName) == Release (
+copy /Y "$(TargetPath)" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(TargetFileName)"
+copy /Y "$(ProjectDir)logo.png" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\logo.png"
+)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,10 +148,11 @@ copy /Y  "$(ProjectDir)$(ProjectName).rndesc" "G:\Soft\Renga\Plugins\$(ProjectNa
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;VS2019CPP_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;RENGAVCPPTEMPLATE_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>%RENGA_SDK%\C++\Include;%RENGA_SDK%\tlb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -155,9 +161,20 @@ copy /Y  "$(ProjectDir)$(ProjectName).rndesc" "G:\Soft\Renga\Plugins\$(ProjectNa
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
     </Link>
+    <PostBuildEvent>
+      <Command>if not exist "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)" mkdir "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)"
+copy /Y "$(ProjectDir)$(ProjectName).rndesc" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(ProjectName).rndesc"
+copy /Y "$(ProjectDir)logo.png" "$(TargetDir)logo.png"
+
+if $(ConfigurationName) == Release (
+copy /Y "$(TargetPath)" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(TargetFileName)"
+copy /Y "$(ProjectDir)logo.png" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\logo.png"
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="init_app.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="init_app.hpp" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +188,10 @@ copy /Y  "$(ProjectDir)$(ProjectName).rndesc" "G:\Soft\Renga\Plugins\$(ProjectNa
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vs2019_cpp.rndesc" />
+    <None Include="renga_vcpp_template.rndesc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

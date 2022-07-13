@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="init_app.h">
+    <ClInclude Include="init_app.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -34,6 +37,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="vs2019_cpp.rndesc" />
+    <None Include="renga_vcpp_template.rndesc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="logo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
