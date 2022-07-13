@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RengaTemplate_charp")]
+[assembly: AssemblyTitle("renga_net_template")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RengaTemplate_charp")]
+[assembly: AssemblyProduct("renga_net_template")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2dbb31ef-a960-49ea-ae08-2c0720bcb333")]
+[assembly: Guid("3422c68e-cd19-4e1b-9fe8-4bd6f170f08f")]
 
 // Version information for an assembly consists of the following four values:
 //

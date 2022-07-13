@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RengaTemplate_charp", "vs2019_csharp.csproj", "{2DBB31EF-A960-49EA-AE08-2C0720BCB333}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "renga_net_template", "renga_net_template.csproj", "{3422C68E-CD19-4E1B-9FE8-4BD6F170F08F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2DBB31EF-A960-49EA-AE08-2C0720BCB333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DBB31EF-A960-49EA-AE08-2C0720BCB333}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DBB31EF-A960-49EA-AE08-2C0720BCB333}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DBB31EF-A960-49EA-AE08-2C0720BCB333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3422C68E-CD19-4E1B-9FE8-4BD6F170F08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3422C68E-CD19-4E1B-9FE8-4BD6F170F08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3422C68E-CD19-4E1B-9FE8-4BD6F170F08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3422C68E-CD19-4E1B-9FE8-4BD6F170F08F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A02B7C0B-D02E-4BC1-B7BA-F7F8152F4F94}
+		SolutionGuid = {3E0EA6F9-0353-4966-9D52-D97841BA72FE}
 	EndGlobalSection
 EndGlobal
