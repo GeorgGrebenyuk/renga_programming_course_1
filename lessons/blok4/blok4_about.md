@@ -1,0 +1,2 @@
+# О блоке 4
+В данном блоке представлен исходный код для двух плагинов - по работе с объектной геометрией и базовыми свойствами для преобразования содержимого модели в формат Autodesk NWC https://github.com/GeorgGrebenyuk/renga_programming_course_1/tree/main/lessons/blok4/nwc_export2 и для контроля за выбором пользователем элементов модели https://github.com/GeorgGrebenyuk/renga_programming_course_1/tree/main/lessons/blok4/Follow_actions3.
