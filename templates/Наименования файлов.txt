@@ -6,5 +6,4 @@ Renga_csharp_plugin
 Шаблон плагина (библиотеки классов на .NET Framework 4.5.2) для Renga, на C#
 
 Renga_vcpp_plugin
-Renga Visual C++ plugin
 Шаблон плагина (библиотеки DLL) для Renga, на Visual C++
