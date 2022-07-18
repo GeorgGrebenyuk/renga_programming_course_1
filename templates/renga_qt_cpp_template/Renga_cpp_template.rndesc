@@ -1,0 +1,8 @@
+<RengaPlugin>
+   <Name>Renga_qt_cpp_template</Name>                       <!-- Displayed plugin name -->
+   <Version>1.0</Version>                           <!-- Plugin version -->
+   <Copyright>GeorgGrebenyuk</Copyright>            <!-- Copyright information -->
+   <RequiredAPIVersion>2.17</RequiredAPIVersion>     <!-- Minimum required version of Renga API -->
+   <PluginFilename>C:\Users\Georg\Documents\GitHub\renga_programming_course_1\templates\build-renga_cpp_template-Desktop_Qt_6_2_3_MSVC2019_64bit-Debug\debug</PluginFilename>      <!-- Path to the plugin's binary file, either relative to the folder containing the .rndesc file or an absolute one -->
+   <Vendor>-</Vendor>                           <!-- Vendor of the plugin -->
+</RengaPlugin>

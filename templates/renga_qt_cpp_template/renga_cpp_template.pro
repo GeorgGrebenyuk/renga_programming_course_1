@@ -1,11 +1,9 @@
 QT -= gui
 
-#TARGET = QuiLib
 TEMPLATE = lib
-DEFINES += QT6_CPP_LIBRARY
+DEFINES += RENGA_CPP_TEMPLATE_LIBRARY
 
-CONFIG += c++14
-
+CONFIG += c++11
 #Вывод в консоль лога в верной кодировке
 #https://blog.mgsxx.com/?p=2979
 QMAKE_EXTRA_TARGETS += before_build makefilehook
@@ -23,25 +21,21 @@ before_build.commands = chcp 1251
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-
 INCLUDEPATH += \
     $$(RENGA_SDK)/C++/Include \
     $$(RENGA_SDK)/tlb
-HEADERS += \
-        rengacomapi.tlh \ #Подключаем com-библиотеку Renga (заголовочный файл)
-        qt6_cpp_global.h \
-        init_app.h
 
-DISTFILES += \
-    /rengacomapi.tli \ #Подключаем com-библиотеку Renga (реализующий файл)
-    hello_renga_qt6.rndesc
 SOURCES += \
-    init_app.cpp \
-    #dllmain.cpp \
+    renga_cpp_template.cpp
 
-
-TRANSLATIONS += \
-    qt6_cpp_ru_RU.ts
+HEADERS += \
+    rengacomapi.tlh \
+    renga_cpp_template_global.h \
+    renga_cpp_template.hpp
+DISTFILES += \
+    Renga_cpp_template.rndesc \
+    logo.png \
+    rengacomapi.tlh
 
 # Default rules for deployment.
 unix {
