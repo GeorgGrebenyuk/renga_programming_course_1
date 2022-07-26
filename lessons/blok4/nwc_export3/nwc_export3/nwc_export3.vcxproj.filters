@@ -24,7 +24,7 @@
     <ClInclude Include="init_app.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="navis_export.hpp">
+    <ClInclude Include="export_nwc.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,12 +38,12 @@
     <ClCompile Include="init_app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="navis_export.cpp">
+    <ClCompile Include="export_nwc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="nwc_export2.rndesc" />
+    <None Include="nwc_export3.rndesc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="logo.png">

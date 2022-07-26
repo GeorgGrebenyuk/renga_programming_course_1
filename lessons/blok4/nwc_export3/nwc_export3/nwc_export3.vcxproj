@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2f05a3c4-baea-4aa8-9b78-77270fb3989e}</ProjectGuid>
-    <RootNamespace>nwc_export2</RootNamespace>
+    <ProjectGuid>{5242378a-44fa-422a-928f-7bba2000e9fb}</ProjectGuid>
+    <RootNamespace>nwc_export3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -124,19 +124,20 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>%RENGA_SDK%\C++\Include;%RENGA_SDK%\tlb;G:\30_Coding\SDK\Navisworks 2022\api\nwcreate\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%RENGA_SDK%\C++\Include;%RENGA_SDK%\tlb;%SDK_NWCREATE%\Include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>G:\30_Coding\SDK\Navisworks 2022\api\nwcreate\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%SDK_NWCREATE%\lib\x64;</AdditionalLibraryDirectories>
       <AdditionalDependencies>nwcreate_19.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)" mkdir "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)"
 copy /Y "$(ProjectDir)$(ProjectName).rndesc" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(ProjectName).rndesc"
 copy /Y "$(ProjectDir)logo.png" "$(TargetDir)logo.png"
+xcopy "$(SDK_NWCREATE)\bin\x64\*.*" "$(SolutionDir)x64\$(Configuration)" /Y /I /E
 
 if $(ConfigurationName) == Release (
 copy /Y "$(TargetPath)" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(TargetFileName)"
@@ -154,7 +155,7 @@ copy /Y "$(ProjectDir)logo.png" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\log
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>%RENGA_SDK%\C++\Include;%RENGA_SDK%\tlb;G:\30_Coding\SDK\Navisworks 2022\api\nwcreate\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%RENGA_SDK%\C++\Include;%RENGA_SDK%\tlb;%SDK_NWCREATE%\Include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,13 +163,14 @@ copy /Y "$(ProjectDir)logo.png" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\log
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>G:\30_Coding\SDK\Navisworks 2022\api\nwcreate\lib\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%SDK_NWCREATE%\lib\x64;</AdditionalLibraryDirectories>
       <AdditionalDependencies>nwcreate_19.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)" mkdir "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)"
 copy /Y "$(ProjectDir)$(ProjectName).rndesc" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(ProjectName).rndesc"
 copy /Y "$(ProjectDir)logo.png" "$(TargetDir)logo.png"
+xcopy "$(SDK_NWCREATE)\bin\x64\*.*" "$(SolutionDir)x64\$(Configuration)" /Y /I /E
 
 if $(ConfigurationName) == Release (
 copy /Y "$(TargetPath)" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\$(TargetFileName)"
@@ -177,15 +179,15 @@ copy /Y "$(ProjectDir)logo.png" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\log
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="export_nwc.hpp" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="init_app.hpp" />
-    <ClInclude Include="navis_export.hpp" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="export_nwc.cpp" />
     <ClCompile Include="init_app.cpp" />
-    <ClCompile Include="navis_export.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -194,7 +196,7 @@ copy /Y "$(ProjectDir)logo.png" "$(RENGA_INSTALL_DIR)\Plugins\$(ProjectName)\log
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="nwc_export2.rndesc" />
+    <None Include="nwc_export3.rndesc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="logo.png" />

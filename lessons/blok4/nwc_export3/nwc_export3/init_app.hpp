@@ -6,6 +6,7 @@
 #include "memory"
 #include "list"
 
+static Renga::IApplicationPtr renga_application;
 class init_app : public plugins::IPlugin
 {
 public:

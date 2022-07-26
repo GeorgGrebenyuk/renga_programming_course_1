@@ -1,19 +1,17 @@
 #include "pch.h"
 #include "init_app.hpp"
 #include "string"
-#include "navis_export.hpp"
-
+#include "export_nwc.hpp"
 #include "Renga\CreateApplication.hpp"
 class button_run :public Renga::ActionEventHandler {
 public:
-	button_run(Renga::IActionPtr action, Renga::IApplicationPtr app) : Renga::ActionEventHandler(action), renga_app(app) {}
+	button_run(Renga::IActionPtr action) : Renga::ActionEventHandler(action) {}
 	void OnTriggered() override
 	{
-		new navis_export(renga_app);
+		new export_nwc(renga_application);
+		renga_application->UI->ShowMessageBox(Renga::MessageIcon_Info, "Сообщение", "Экспорт завершен!");
 	}
 	void OnToggled(bool checked) override {}
-private:
-	Renga::IApplicationPtr renga_app;
 
 };
 void init_app::addHandler(Renga::ActionEventHandler* pHandler) 
@@ -25,18 +23,19 @@ bool init_app::initialize(const wchar_t* pluginPath)
 	auto renga_app = Renga::CreateApplication();
 	if (renga_app)
 	{
+		renga_application = renga_app;
 		Renga::IUIPtr renga_ui = renga_app->GetUI();
 		Renga::IUIPanelExtensionPtr panel = renga_ui->CreateUIPanelExtension();
 
 		Renga::IActionPtr our_button = renga_ui->CreateAction();
-		our_button->ToolTip = "Start export to NWD";
+		our_button->ToolTip = "Начать экспорт";
 
 		Renga::IImagePtr icon = renga_ui->CreateImage();
 		std::wstring plugin_dir(pluginPath);
 		icon->LoadFromFile((plugin_dir + L"\\logo.png").c_str());
 		our_button->PutIcon(icon);
 
-		this->addHandler(new button_run(our_button, renga_app));
+		this->addHandler(new button_run(our_button));
 		panel->AddToolButton(our_button);
 		renga_ui->AddExtensionToPrimaryPanel(panel);
 

@@ -1,5 +1,5 @@
 <RengaPlugin>
-	<Name>Плагин по экспорту модели в NWC</Name>
+	<Name>Тестовый экспорт в NWC</Name>
 	<!-- Displayed plugin name -->
 	<Version>1.0</Version>
 	<!-- Plugin version -->
@@ -9,7 +9,7 @@
 	<!-- Minimum required version of Renga API -->
 	<!--PluginType>cpp</PluginType>
 	 Plugin type. Use "net" for .NET (C#, C++/CLI) and "cpp" for Visual C++. Optional, defaults to "cpp" -->
-	<PluginFilename>C:\Users\Georg\Documents\GitHub\renga_programming_course_1\lessons\blok4\nwc_export2\x64\Debug\nwc_export2.dll</PluginFilename>
+	<PluginFilename>C:\Users\Georg\Documents\GitHub\renga_programming_course_1\lessons\blok4\nwc_export3\x64\Debug\nwc_export3.dll</PluginFilename>
 	<!-- Path to the plugin's binary file, either relative to the folder containing the .rndesc file or an absolute one -->
 	<Vendor>-</Vendor>
 	<!-- Vendor of the plugin -->
