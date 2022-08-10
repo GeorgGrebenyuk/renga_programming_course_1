@@ -450,7 +450,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "#Настоящий скрипт является частью обучающего курса по Renga API https://github.com/GeorgGrebenyuk/renga_programming_course_1\r\nimport json\r\nfrom json import *\r\n\r\n#сходные данные\r\nproperties_types = IN[0]\r\nproperties_names = IN[1]\r\nobjects2ifc_types = IN[2]\r\njson_qset_type_path = IN[3]\r\nrenga_project_path = IN[4]\r\njson_out = dict()\r\nwith open(json_qset_type_path, \"r\") as source_file:\r\n\tjson_out = json.load(source_file)\r\n\tfor property_id_str,to_objects in properties_types.items():\r\n\t\t#Получим ifc-типы в которые выгружаются объекты\r\n\t\tprop_index = IN[5].index(property_id_str)\r\n\t\tproperty_name = properties_names[prop_index]\r\n\t\tifc_types_list = list()\r\n\t\tfor one_applied_object_category_guid in to_objects:\r\n\t\t\tone_applied_object_category = str(one_applied_object_category_guid)\r\n\t\t\tifc_types_list_one = objects2ifc_types[one_applied_object_category]\r\n\t\t\tfor ifc_type_one in ifc_types_list_one:\r\n\t\t\t\tif ifc_type_one not in ifc_types_list:\r\n\t\t\t\t\tjson_ifc_to_that_group = json_out.get(ifc_type_one,None)\r\n\t\t\t\t\tif json_ifc_to_that_group != None:\r\n\t\t\t\t\t\tjson_psets = json_ifc_to_that_group.get(\"psets\",None)\r\n\t\t\t\t\t\tif json_psets != None:\r\n\t\t\t\t\t\t\tjson_pset_common = json_psets.get(\"Pset_properties\", None)\r\n\t\t\t\t\t\t\tif json_pset_common == None:\r\n\t\t\t\t\t\t\t\tjson_psets[\"Pset_properties\"] = dict()\r\n\t\t\t\t\t\t\t\tjson_pset_common = json_psets[\"Pset_properties\"]\r\n\t\t\t\t\t\t\t#Заносим наше свойство с проверкой нет ли его\r\n\t\t\t\t\t\t\tcheck_exist_property = json_pset_common.get(property_name, None)\r\n\t\t\t\t\t\t\tif check_exist_property == None:\r\n\t\t\t\t\t\t\t\tjson_pset_common[property_name] = \"{\" + str(property_id_str) + \"}\"\r\n\tsource_file.close()\r\nopen(json_qset_type_path.replace(\".json\",\"_1.json\"), \"w\").write(json.dumps(json_out, ensure_ascii=False, indent=4))\r\n    \r\nOUT = 0",
+      "Code": "#Настоящий скрипт является частью обучающего курса по Renga API https://github.com/GeorgGrebenyuk/renga_programming_course_1\r\nimport json\r\nfrom json import *\r\n\r\n#сходные данные\r\nproperties_types = IN[0]\r\nproperties_names = IN[1]\r\nobjects2ifc_types = IN[2]\r\njson_qset_type_path = IN[3]\r\nrenga_project_path = IN[4]\r\njson_out = dict()\r\nwith open(json_qset_type_path, \"r\") as source_file:\r\n\tjson_out = json.load(source_file)\r\n\tfor property_id_str,to_objects in properties_types.items():\r\n\t\t#Получим ifc-типы в которые выгружаются объекты\r\n\t\tprop_index = IN[4].index(property_id_str)\r\n\t\tproperty_name = properties_names[prop_index]\r\n\t\tifc_types_list = list()\r\n\t\tfor one_applied_object_category_guid in to_objects:\r\n\t\t\tone_applied_object_category = str(one_applied_object_category_guid)\r\n\t\t\tifc_types_list_one = objects2ifc_types[one_applied_object_category]\r\n\t\t\tfor ifc_type_one in ifc_types_list_one:\r\n\t\t\t\tif ifc_type_one not in ifc_types_list:\r\n\t\t\t\t\tjson_ifc_to_that_group = json_out.get(ifc_type_one,None)\r\n\t\t\t\t\tif json_ifc_to_that_group != None:\r\n\t\t\t\t\t\tjson_psets = json_ifc_to_that_group.get(\"psets\",None)\r\n\t\t\t\t\t\tif json_psets != None:\r\n\t\t\t\t\t\t\tjson_pset_common = json_psets.get(\"Pset_properties\", None)\r\n\t\t\t\t\t\t\tif json_pset_common == None:\r\n\t\t\t\t\t\t\t\tjson_psets[\"Pset_properties\"] = dict()\r\n\t\t\t\t\t\t\t\tjson_pset_common = json_psets[\"Pset_properties\"]\r\n\t\t\t\t\t\t\t#Заносим наше свойство с проверкой нет ли его\r\n\t\t\t\t\t\t\tcheck_exist_property = json_pset_common.get(property_name, None)\r\n\t\t\t\t\t\t\tif check_exist_property == None:\r\n\t\t\t\t\t\t\t\tjson_pset_common[property_name] = \"{\" + str(property_id_str) + \"}\"\r\n\tsource_file.close()\r\nopen(json_qset_type_path.replace(\".json\",\"_1.json\"), \"w\").write(json.dumps(json_out, ensure_ascii=False, indent=4))\r\n    \r\nOUT = 0",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "0574bd38f602435388c93f0b0f01bd97",
@@ -499,15 +499,6 @@
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
-        },
-        {
-          "Id": "1e4416ee81f84f40b0e141f92cc4edd9",
-          "Name": "IN[5]",
-          "Description": "Input #5",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
         }
       ],
       "Outputs": [
@@ -544,36 +535,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Возможность выбрать файл в системе и получить путь к нему."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "DynRenga.DynDocument.Project.Project.FilePath",
-      "Id": "74b1eea9a8154dfeb4927dbe40f61376",
-      "Inputs": [
-        {
-          "Id": "91613b38cb7749bf9201c94145efd73d",
-          "Name": "project",
-          "Description": "DynRenga.DynDocument.Project.Project",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "4ee1cac48cb94f05bc4b88c8429bc87a",
-          "Name": "string",
-          "Description": "Строковый файловый путь",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Получение файлового пути, по которому сохранен текущий проект или null если он не сохранен\n\nProject.FilePath ( ): string"
     },
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
@@ -741,11 +702,6 @@
       "Id": "71181fcaec204788a7b4614d55885b93"
     },
     {
-      "Start": "660bd7eafdca447e81b56b68c5785359",
-      "End": "91613b38cb7749bf9201c94145efd73d",
-      "Id": "caa4c231f1b44da79f509af7e071d37c"
-    },
-    {
       "Start": "a1fc82cc2eb442d5a2ddbed0f52ea5b2",
       "End": "4c405fe925324482b4120e3e9223d295",
       "Id": "a8c2bcf7a53f4035a67312290ea5880f"
@@ -842,18 +798,13 @@
     },
     {
       "Start": "209b0b68d58d4cbdb1261aeb6bef7eae",
-      "End": "1e4416ee81f84f40b0e141f92cc4edd9",
-      "Id": "40b09b884f6d4d04ac345ebf49b9a1df"
+      "End": "e0ad94e484ac4759ab875614b80063e4",
+      "Id": "cd8ece4abe4640a38904bf547f56ac52"
     },
     {
       "Start": "3a752538eff14ce788fa26ff0af4417c",
       "End": "18684333d527429ca3724c0cb5110bc0",
       "Id": "31f57d270fbe45abb97179fc71fe29b3"
-    },
-    {
-      "Start": "4ee1cac48cb94f05bc4b88c8429bc87a",
-      "End": "e0ad94e484ac4759ab875614b80063e4",
-      "Id": "64dc8e51e4b44cca9aeb5c9f53de56c6"
     },
     {
       "Start": "81ab06e79c4c43a797fccb55fd9a525f",
@@ -925,8 +876,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 25.204334086992276,
-        "Y": 442.23949014017887
+        "X": 216.99728010490389,
+        "Y": 215.17427818793874
       },
       {
         "ShowGeometry": true,
@@ -935,8 +886,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 236.20433408699228,
-        "Y": 440.23949014017887
+        "X": 427.99728010490389,
+        "Y": 213.17427818793874
       },
       {
         "ShowGeometry": true,
@@ -945,8 +896,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 572.20433408699228,
-        "Y": 444.23949014017887
+        "X": 763.99728010490389,
+        "Y": 217.17427818793874
       },
       {
         "ShowGeometry": true,
@@ -955,8 +906,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1045.0195542436929,
-        "Y": 160.69886840232078
+        "X": 1296.6922307805278,
+        "Y": 94.922059880661152
       },
       {
         "ShowGeometry": true,
@@ -965,8 +916,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2477.4703249986524,
-        "Y": -11.539255948996129
+        "X": 2061.4961962390084,
+        "Y": 10.945832092065643
       },
       {
         "ShowGeometry": true,
@@ -975,8 +926,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1525.8794687915249,
-        "Y": 904.06538974825457
+        "X": 1583.196900934809,
+        "Y": 923.90603933631428
       },
       {
         "ShowGeometry": true,
@@ -985,8 +936,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1901.9851293265269,
-        "Y": 868.87483798719461
+        "X": 1959.3025614698111,
+        "Y": 888.71548757525431
       },
       {
         "ShowGeometry": true,
@@ -995,8 +946,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2285.8686969533364,
-        "Y": 542.37060100069186
+        "X": 2343.1861290966208,
+        "Y": 562.21125058875157
       },
       {
         "ShowGeometry": true,
@@ -1005,8 +956,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1747.8527632496919,
-        "Y": 579.967323487758
+        "X": 1805.170195392976,
+        "Y": 599.8079730758177
       },
       {
         "ShowGeometry": true,
@@ -1015,8 +966,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2785.2279247480819,
-        "Y": 547.75044544594232
+        "X": 2842.5453568913663,
+        "Y": 567.591095034002
       },
       {
         "ShowGeometry": true,
@@ -1025,8 +976,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1859.0715589461802,
-        "Y": 772.37905948920945
+        "X": 1916.3889910894643,
+        "Y": 792.21970907726916
       },
       {
         "ShowGeometry": true,
@@ -1035,8 +986,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3217.3652030942048,
-        "Y": 365.68764548795315
+        "X": 3241.6148859240557,
+        "Y": 310.5747299655647
       },
       {
         "ShowGeometry": true,
@@ -1045,8 +996,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1469.9786047929456,
-        "Y": 333.79853648331056
+        "X": 1721.6512813297804,
+        "Y": 268.02172796165092
       },
       {
         "ShowGeometry": true,
@@ -1070,23 +1021,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Project.FilePath",
-        "Id": "74b1eea9a8154dfeb4927dbe40f61376",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 569.25451088606837,
-        "Y": 174.3418830815375
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Python Script",
         "Id": "a0368fe424a3420c8fdc97091b95c4b2",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3623.53668609386,
-        "Y": 982.670347237847
+        "X": 3488.4939199716846,
+        "Y": 733.47008388553672
       },
       {
         "ShowGeometry": true,
@@ -1095,8 +1036,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3353.58513991059,
-        "Y": 953.428512960141
+        "X": 3218.5423737884144,
+        "Y": 704.22824960783078
       },
       {
         "ShowGeometry": true,
@@ -1138,12 +1079,12 @@
           "3354bd7dfd90466eb5b3929cc540772e",
           "bbd03a46b0f843c3a1745228d031e025"
         ],
-        "Left": 15.204334086992276,
-        "Top": 387.23949014017887,
+        "Left": 206.99728010490389,
+        "Top": 160.17427818793874,
         "Width": 876.0,
         "Height": 150.0,
         "FontSize": 36.0,
-        "InitialTop": 440.23949014017887,
+        "InitialTop": 213.17427818793874,
         "InitialHeight": 149.0,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
@@ -1153,16 +1094,17 @@
         "Title": "Получение всех идентификаторов свойств",
         "Nodes": [
           "12d0a76ec0764ec6866bb33934a6fab5",
-          "c7b315326a85469f8856137ea048fcc7"
+          "c7b315326a85469f8856137ea048fcc7",
+          "27bf7726b7ca4bbe9c9f6e46e1073d15"
         ],
-        "Left": 1035.0195542436929,
-        "Top": 64.698868402320784,
-        "Width": 690.95905054925265,
-        "Height": 362.09966808098977,
+        "Left": 1286.6922307805278,
+        "Top": -42.054167907934357,
+        "Width": 1044.8039654584807,
+        "Height": 403.07589586958528,
         "FontSize": 36.0,
-        "InitialTop": 160.69886840232078,
+        "InitialTop": 10.945832092065643,
         "InitialHeight": 318.09966808098977,
-        "TextblockHeight": 86.0,
+        "TextblockHeight": 43.0,
         "Background": "#FFFFB8D8"
       },
       {
@@ -1176,12 +1118,12 @@
           "6ab79a326e694e50b19df3a0bdcb0caa",
           "6a2fe81a64154648bebd42f28a632d7b"
         ],
-        "Left": 1515.8794687915249,
-        "Top": 489.37060100069186,
-        "Width": 1450.348455956557,
+        "Left": 1573.196900934809,
+        "Top": 509.21125058875157,
+        "Width": 1450.3484559565572,
         "Height": 524.50423698650275,
         "FontSize": 36.0,
-        "InitialTop": 542.37060100069186,
+        "InitialTop": 562.21125058875157,
         "InitialHeight": 506.69478874756271,
         "TextblockHeight": 43.0,
         "Background": "#FF71C6A8"
@@ -1192,12 +1134,12 @@
         "Nodes": [
           "d80ff063fcef481fb100e5dc365320a3"
         ],
-        "Left": 3207.3652030942048,
-        "Top": 182.68764548795315,
+        "Left": 3231.6148859240557,
+        "Top": 127.5747299655647,
         "Width": 285.87,
         "Height": 302.0,
         "FontSize": 36.0,
-        "InitialTop": 365.68764548795315,
+        "InitialTop": 310.5747299655647,
         "InitialHeight": 145.0,
         "TextblockHeight": 173.0,
         "Background": "#FFC1D676"
@@ -1209,12 +1151,12 @@
           "5948cef1bf7c421090fba6a647f9c7cf",
           "a0368fe424a3420c8fdc97091b95c4b2"
         ],
-        "Left": 3343.58513991059,
-        "Top": 857.428512960141,
+        "Left": 3208.5423737884144,
+        "Top": 608.22824960783078,
         "Width": 413.95154618327024,
         "Height": 255.24183427770595,
         "FontSize": 36.0,
-        "InitialTop": 953.428512960141,
+        "InitialTop": 704.22824960783078,
         "InitialHeight": 174.24183427770595,
         "TextblockHeight": 86.0,
         "Background": "#FF48B9FF"
@@ -1252,8 +1194,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 172.20337545064694,
-    "Y": 387.75466828578107,
-    "Zoom": 0.26414634607885062
+    "X": -1211.3954074613309,
+    "Y": 303.58920238579361,
+    "Zoom": 0.83462853062852194
   }
 }
